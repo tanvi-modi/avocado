@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Visualizing Avocado Prices in USA </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+
+<body>
+    <!-- grid-container: introduction -->
+    <div class="grid-container-1">
+        <div class="rectangle">
+            <h1> Are Avocados costly everywhere in the United States? </h1>
+            <div class="content">
+
+                <p> <b><u>Production:</u></b> The United States is the second largest producer of avocados after
+                    <b>Mexico</b>. About
+                    90%
+                    of avocado
+                    production in the United States takes place in <b>California</b> by more than 5,000 growers. The
+                    average
+                    grove
+                    size in California is about 13 acres. One avocado tree can produce from 200 to 500 avocados
+                    per
+                    year.
+                    About 400 million pounds of avocados are harvested each year in California alone. <b>Florida
+                        and Hawaii</b>
+                    produce most of the remaining 10% of avocados produced in the United States.
+
+                </p>
+
+                <p> <b> <u>Consumption:</u></b> Avocado consumption in the United States has doubled over the past
+                    10 years and
+                    is now about four times
+                    higher than consumption in the mid-1990s. Avocados have become more abundant in the U.S. due to
+                    a
+                    large
+                    increase in avocado imports. From 2012-2015, U.S. net production accounted for about 20% of U.S.
+                    consumption, compared to about 80% of U.S. consumption in the 1990s.
+                </p>
+
+                <p>
+                    <b> <u>Prices:</u></b> Avocado prices have rocketed in recent years by up to 129%, with the average
+                    national price of a single Hass avocado reaching $2.10 in 2019, almost doubling in just one year.
+                    The <b>resources needed to produce</b> almost 200 million pounds of avocados is the reason for
+                    avocados'
+                    elevated prices.
+                    According to experts, it takes roughly 270 liters of water to grow a pound of avocados. So 200
+                    million pounds could require as much as 54 billion liters of water, which means droughts or heat
+                    waves can have <b>devastating consequences on the avocado industry</b>.
+                </p>
+
+            </div>
+        </div>
+        <div class="image"> <img src="Images/image3.jpg"> </div>
+    </div>
+
+    <!-- section-1 : exploratory data analysis -->
+    <div class="section-1">
+        <h1> Exploratory Data Analysis </h1>
+        <h3> Why I chose this data: </h3>
+        <p> When I moved to the US, a friend once told me about <a
+                href="https://www.healthline.com/nutrition/12-proven-benefits-of-avocado#TOC_TITLE_HDR_13"> Avocados and
+                its health benefits</a>, which I was unaware of
+            earlier. I have loved Avocados
+            ever since then! I love the creamy and rich texture of this fruit and I innovate dishes using avocados in my
+            kitchen; on toasts, salads, and smoothies.
+            Recently, I've become so fond of avocados, that I started using avocado lotions, bodywash, and also avocado
+            oil for cooking.
+            However, I do not indulge in them too often because <b>they are so expensive</b>. </p>
+        <p> I lived in California for about 8 months before I moved to Boston, and I realised the <b>differences in cost
+                of
+                avocados for both organic and conventional</b>
+            types in both the places. I was unable to really judge the reasons of the steep prices. <b>Therefore, I have
+                decided to study the pattern of Avocado prices in various regions of the United States from 2015 to
+                2018.</b>
+        </p>
+        <h3> The Dataset: </h3>
+        <div class="dataset"><img src="Images/dataset.png" width=1000 height=500></div>
+        <p> The above dataset on avocado prices is from <a href="https://www.kaggle.com/neuromusic/avocado-prices">
+                here</a>.
+            This dataset scans data for National retail volume (units) and price. The Average Price (of avocados) in the
+            table reflects <b>a per unit (per avocado) cost</b>, even when multiple
+            units (avocados) are sold in bags. It gives us <b>weekly average price and volume for 50 regions &
+                cities</b> from
+            2015
+            to 2018 for two types of avocados –– <b> organic and conventional.</b> </p>
+        <h3> How I wanted to clean, parse and refine my data: </h3>
+        <p> This dataset has multiple variables and I wanted to visualize my data through a lollipop chart. To be able
+            to show avocado prices
+            for two types, in the years 2015 and 2018, across 14 regions, I had to flatten my dataset and simplify it in
+            order to append the shapes in my SVG.
+        </p>
+
+        <p> A simple flowchart below shows how I imagined my data to be simplified: </p>
+        <div class="flow-chart"><img src="Images/images_flowchart_edited-04.png" width="750" height="575"> </div>
+
+
+        <p> The array of the dataset was simplified using Javascript & D3 to this structure: </p>
+        <div class="console"> <img src="Images/console_edited_new.png" width=1000 height=500> </div>
+    </div>
+
+    <!-- section-2 : lollipop-chart -->
+    <div class="section-2">
+        <h1> Prices of Conventional and Organic Avocados in 2015 & 2018</h1>
+        <p><b>Choosing 16 Regions from the dataset based on Geography: </b></p>
+        <p> For this visualization, I chose 4 states from each region - <b>Mid-West, North-East, South and West.</b>
+            The strategy was to study the patterns of Avocado prices by grouping them based on regions, since the
+            differences in prices is mainly due to its the location. <b>Closer the states are to the cultivation and
+                production sites, the cheaper their prices are per unit.</b>
+        </p>
+        <div id="mapimage">
+            <img src="Images/new_map-new-01.png" width=1100 height=600>
+        </div>
+        <p> Below is a <b>Lollipop chart</b> that I constructed using D3 and JS. This shows the <b>average price
+                difference</b> between
+            avocados sold in 2015 and 2018 for both organic and conventional avocados. The y-axis of the chart shows the
+            states in the order of South, North-East, Mid-west, and West from top to below. </p>
+        <br>
+        <div id="light-line">
+            <p> Hover over the points to view the region, average price, year and type of avocados. </p>
+        </div>
+    </div>
+
+    <div class="grid-container-2">
+        <div id="chart-1">
+            <script src="./Lollipop-chart.js"></script>
+        </div>
+        <div id="legend">
+            <h3> <b>Legend:</b></h3>
+            <img src="Images/Legend_edited-02.png" width="220" height="210">
+        </div>
+    </div>
+    </div>
+
+    <!-- section-4 : inferences -->
+    <div class="section-4">
+        <h3> Inferences</h3>
+        <ul>
+            <li> We are able to get a good number of insights from the above lollipop chart. One obvious
+                difference
+                is between the prices of the organic and the
+                conventional avocados: <b>Organic ones in both 2015 and 2018 are much pricy than the conventional
+                    ones</b>.
+            </li>
+            <br>
+            <li> Majority of avocado production take place in Mexico, California and Florida. Therefore, regions
+                like <b>Houston(Texas)</b>,
+                <b>LasVegas(Nevada)</b>, <b>West Tex New Mexico</b>, and <b>Atlanta(Georgia)</b> have the
+                <b>cheapest avocados</b> due to
+                their proximity to production sites. SanFrancisco, with its higher cost of living,
+                also have cheaper avocados in comparison to those regions on central or north of America.
+            </li>
+            <br>
+            <li> Region-wise, we see that <b> North-East has the highest avocado prices</b> for both organic and
+                conventional types
+                because of higher transportation costs from avocado farms in the South. . </li>
+            <li> Additionally, all 4 states in the <b>West Coast have extremely lower prices</b>, because of its
+                proximity to Mexico, a major production country. </li>
+
+
+            <br>
+            <li> For most of the regions, avocado prices have <b>risen</b> from 2015 to 2018 for conventional type.
+                However,
+                for organic avocados, prices for majority of the regions have <b> alleviated </b> from 2015 to 2018.
+                This might be due to
+                the increased production at sites because of improved weather conditions, and perhaps lower demand
+                for organic avocados.
+            </li>
+        </ul>
+    </div>
+
+    <!-- section-3 : line-chart -->
+    <div class="section-3">
+        <h1> Organic and Conventional Avocado Prices in Boston: 2015-2018 </h1>
+        <div class="title">
+            <p> Below is a <b>Line Chart</b> made using D3.js with a data-update pattern. Each year shows the
+                fluctuations in avocado prices
+                over 52 weeks for Boston. Particularly, I chose <b> Boston</b> as I live here currently and would love
+                to study the pricing patterns because
+                I love avocados, and this will make me more conscious about economical avocado shopping in Boston in the
+                coming years. </p>
+            <p>However, this dataset consisits of data only upto <b> March 2018</b> and hence we will see a shorter line
+                for 2018.</p>
+            <div id="light-line">
+                <p> Toggle between the years 2015, 2016, 2017, and 2018 to see the fluctuations of prices over time.</p>
+                    <p> Hover over the dots to see the date, type and price. </p>
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="fifteen">2015</button>
+            <button id="sixteen">2016</button>
+            <button id="seventeen">2017</button>
+            <button id="eighteen">2018</button>
+        </div>
+        <div id="chart-2">
+            <script src="./avocado_update_pattern.js"></script>
+        </div>
+        <div class="flex-container-1">
+            <div id="legend-2">
+                <h3> <b>Legend:</b></h3>
+            </div>
+            <div id="legend-pic"> <img src="Images/legend-pic_4.png" width="500" height="70"></div>
+            
+
+        </div>
+    </div>
+
+
+
+    <!-- section-5 : references -->
+    <div class="section-5">
+        <p> Design and Content by <b>Tanvi Modi</b></p>
+        <div id="references">
+            <b>References: </b>
+            <li> Data: <a href="https://www.kaggle.com/neuromusic/avocado-prices"> Kaggle </a> </li>
+            <li> Code: <a href="https://www.w3schools.com/w3css/default.asp"> W3 Schools </a>, <a
+                    href="https://stackoverflow.com/"> StackOverflow</a>, <a href="https://grid.layoutit.com/"> Grid
+                    Generator </a></li>
+            <li> Design Inspiration: <a href="http://www.csszengarden.com/">CSS Zen Garden </a> </li>
+            <li> Visualization: <a href="https://www.d3-graph-gallery.com/">D3 Graph Gallery </a> </li>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>
